@@ -1,0 +1,29 @@
+﻿@model IEnumerable<BookStore.Models.Book>
+@{
+    ViewBag.Title = "ListBooks";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ListBooks</h2>
+<div class="row">
+    @foreach (var item in Model.ToList())
+    {
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel panel-heading">@item.tittle</div>
+                <div class="panel-body">
+                    <p><strong>Author: </strong>@item.author </p>
+                    <p><strong>Publish Year: </strong>@item.publishYear </p>
+                    <p><strong>Price: </strong>@item.price </p>
+                    <p><img src="/@item.cover" alt="img thumnail" height="360"></p>
+                </div>
+                <div class="panel-footer clearfix">
+                    <div class="pull-right">
+                        <a href="" class="btn btn-primary">Order</a>
+                        <a href="" class="btn btn-default">Read more...</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
