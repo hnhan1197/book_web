@@ -23,5 +23,57 @@ namespace BookStore.Controllers
         {
             return View(listBooks);
         }
+
+        public ActionResult Detail(int? id)
+        {
+            if (id == null)
+                return HttpNotFound();
+            Book book = listBooks.FirstOrDefault(p => p.iD == id);
+            if (book == null)
+            {
+                return HttpNotFound();
+            }
+            return View(book);
+        }
+
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+                return HttpNotFound();
+            Book book = listBooks.FirstOrDefault(p => p.iD == id);
+            if (book == null)
+            {
+                return HttpNotFound();
+            }
+            return View(book);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(Book book)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var editBook = listBooks.FirstOrDefault(p => p.iD == book.iD);
+                    editBook.tittle = book.tittle;
+                    editBook.author = book.author;
+                    editBook.cover = book.cover;
+                    editBook.author = book.author;
+                    editBook.publishYear = book.publishYear;
+                    return View("ListBooks", listBooks);
+                }
+                catch
+                {
+                    return HttpNotFound();
+                    throw;
+                }
+            }else
+            {
+                ModelState.AddModelError("","Input Model Not Valid!");
+                return View(book);
+            }
+        }
     }
 }

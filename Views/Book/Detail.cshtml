@@ -1,0 +1,24 @@
+﻿    @model BookStore.Models.Book
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Html.DisplayFor(p => p.tittle) </h2>
+
+<div class="col-sm-12 col-md-12">
+    <div class="thumbnail">
+        <img src="/@Html.DisplayFor(p => p.cover)" alt="thumnail" width="33%"/>
+    </div>
+    <div class="caption">
+        <p>@Html.DisplayNameFor(p => p.author): @Html.DisplayFor(p => p.author) </p>
+        <p>@Html.DisplayNameFor(p => p.publishYear): @Html.DisplayFor(p => p.publishYear) </p>
+        <p>@Html.DisplayNameFor(p => p.price): @Html.DisplayFor(p => p.price) </p>
+        <p>
+            <a href="#" class="btn btn-primary">Buy</a>
+            @Html.ActionLink("Back to List", "ListBooks", "Book", new {@class = "btn btn-info"})
+        </p>
+    </div>
+</div>
+

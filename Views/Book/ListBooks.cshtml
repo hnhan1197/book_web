@@ -10,7 +10,10 @@
     {
         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
             <div class="panel panel-default">
-                <div class="panel panel-heading">@item.tittle</div>
+                <div class="panel panel-heading">
+                    @item.tittle
+                    @Html.ActionLink("Edit", "Edit", new {id = item.iD}, new {@class = "pull-right"})
+                </div>
                 <div class="panel-body">
                     <p><strong>Author: </strong>@item.author </p>
                     <p><strong>Publish Year: </strong>@item.publishYear </p>
@@ -20,7 +23,8 @@
                 <div class="panel-footer clearfix">
                     <div class="pull-right">
                         <a href="" class="btn btn-primary">Order</a>
-                        <a href="" class="btn btn-default">Read more...</a>
+                        @*<a href="" class="btn btn-default">Read more...</a>*@
+                        @Html.ActionLink("Read more...", "Detail","", new {id = item.iD}, new {@class = "btn btn-default" })
                     </div>
                 </div>
             </div>

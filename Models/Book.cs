@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -19,7 +20,11 @@ namespace BookStore.Models
 
 
         public int iD { get; set; }
+        [Required(ErrorMessage = "Please input title")]
         public string tittle { get; set; }
+
+        [Required(ErrorMessage = "Please input author")]
+        [StringLength(50, ErrorMessage ="Author less than 50 characters")]
         public string author { get; set; }
         public int publishYear { get; set; }
         public double price { get; set; }
